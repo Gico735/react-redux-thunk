@@ -1,6 +1,8 @@
-export function setYear(year) {
+export const SET_YEAR = 'SET_YEAR'
+
+export const setYear = year => {
   return {
-    type: 'SET_YEAR',
+    type: SET_YEAR,
     payload: year,
   }
 }

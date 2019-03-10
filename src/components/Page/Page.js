@@ -7,10 +7,13 @@ export class Page extends React.Component {
   render() {
     const { currYear, initYear, photos } = this.props
     return (
-      <div>
+      <div className="page">
         <div>
           {new Array(5).fill('').map((_, index) => (
-            <button key={index} onClick={this.setYear} className="page__btn">
+            <button
+              key={index}
+              onClick={this.setYear}
+              className={`page__btn page__btn--${index}`}>
               {initYear - index}
             </button>
           ))}

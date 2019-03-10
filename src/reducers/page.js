@@ -1,3 +1,5 @@
+import { SET_YEAR } from '../actions/PageActions'
+
 const initialState = {
   initYear: 2019,
   currYear: 2019,
@@ -6,7 +8,7 @@ const initialState = {
 
 export const pageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_YEAR':
+    case SET_YEAR:
       return { ...state, currYear: action.payload }
     default:
       return state
