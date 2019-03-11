@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export class Page extends React.Component {
-  setYear = ({ target: { textContent } }) => this.props.setYear(+textContent)
+  setYear = ({ target: { textContent } }) => this.props.getPhotos(+textContent)
 
   render() {
-    const { currYear, initYear, photos } = this.props
+    const { currYear, initYear, photos, isFetching } = this.props
     return (
       <div className="page">
         <div>
@@ -18,16 +18,17 @@ export class Page extends React.Component {
             </button>
           ))}
         </div>
-        <p>
-          У тебя {photos.length} фото за {currYear} год
-        </p>
+        <h3>{currYear} год</h3>
+        {isFetching ? <p>Загрузка...</p> : <p>У тебя {photos.length} фото.</p>}
       </div>
     )
   }
 }
 
 Page.propTypes = {
+  initYear: PropTypes.number.isRequired,
   currYear: PropTypes.number.isRequired,
   photos: PropTypes.array.isRequired,
-  setYear: PropTypes.func.isRequired,
+  getPhotos: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 }

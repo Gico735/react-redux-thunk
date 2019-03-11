@@ -1,15 +1,20 @@
-import { SET_YEAR } from '../actions/PageActions'
+import { GET_PHOTOS_REQUEST, GET_PHOTOS_SUCCESS } from '../actions/PageActions'
 
 const initialState = {
   initYear: 2019,
   currYear: 2019,
   photos: [],
+  isFetching: false,
 }
 
 export const pageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_YEAR:
-      return { ...state, currYear: action.payload }
+    case GET_PHOTOS_REQUEST:
+      return { ...state, currYear: action.payload, isFetching: true }
+
+    case GET_PHOTOS_SUCCESS:
+      return { ...state, photos: action.payload, isFetching: false }
+
     default:
       return state
   }
